@@ -1,0 +1,10 @@
+package com.bolbo.study.db;
+
+import com.bolbo.study.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUserName(String userName);
+}

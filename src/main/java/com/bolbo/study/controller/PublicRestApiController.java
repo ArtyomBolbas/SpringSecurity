@@ -1,14 +1,22 @@
 package com.bolbo.study.controller;
 
+import com.bolbo.study.db.UserRepository;
+import com.bolbo.study.model.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/public")
 public class PublicRestApiController {
 
-    public PublicRestApiController(){}
+    private UserRepository userRepository;
+
+    public PublicRestApiController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @GetMapping("test1")
     public String test1(){
@@ -20,4 +28,8 @@ public class PublicRestApiController {
         return "API Test 2";
     }
 
+    @GetMapping("users")
+    public List<User> allUser(){
+        return this.userRepository.findAll();
+    }
 }
