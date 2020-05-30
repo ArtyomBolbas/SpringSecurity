@@ -5,7 +5,9 @@ import com.bolbo.study.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserPrincipalDetailsService implements UserDetailsService {
 
     private UserRepository userRepository;
@@ -15,8 +17,8 @@ public class UserPrincipalDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = this.userRepository.findByUserName(s);
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        User user = this.userRepository.findByUserName(name);
         UserPrincipal userPrincipal = new UserPrincipal(user);
 
         return userPrincipal;
