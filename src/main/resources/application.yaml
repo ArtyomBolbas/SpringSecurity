@@ -16,12 +16,8 @@ spring:
         properties:
             hibernate:
                 formatSql: true
-                jdbc:
-                    lob:
-                        non-contextual-creation: true
                 temp:
                     use_jdbc_metadata_defaults: false
         show-sql: true
         hibernate:
-            dialect: org.hibernate.dialect.PostgreSQL94Dialect
             ddl-auto: create
